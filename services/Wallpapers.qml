@@ -12,7 +12,12 @@ Searcher {
     id: root
 
     readonly property string currentNamePath: `${Paths.state}/wallpaper/path.txt`
-    readonly property list<string> smartArg: GlobalConfig.services.smartScheme ? [] : ["--no-smart"]
+    readonly property list<string> smartArg: {
+        const pt = GlobalConfig.services.paletteType;
+        if (pt !== "auto" && pt !== "")
+            return ["--scheme", pt];
+        return GlobalConfig.services.smartScheme ? [] : ["--no-smart"];
+    }
 
     property bool showPreview: false
     readonly property string current: showPreview ? previewPath : actualCurrent
