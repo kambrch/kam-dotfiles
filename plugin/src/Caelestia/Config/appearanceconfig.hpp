@@ -114,6 +114,11 @@ class FontFamily : public ConfigObject {
     CONFIG_PROPERTY(QString, mono, QStringLiteral("CaskaydiaCove NF"))
     CONFIG_PROPERTY(QString, material, QStringLiteral("Material Symbols Rounded"))
     CONFIG_PROPERTY(QString, clock, QStringLiteral("Rubik"))
+    CONFIG_PROPERTY(QString, numbers, QStringLiteral("Rubik"))
+    CONFIG_PROPERTY(QString, title, QStringLiteral("Rubik"))
+    CONFIG_PROPERTY(QString, iconNerd, QStringLiteral("CaskaydiaCove NF"))
+    CONFIG_PROPERTY(QString, reading, QStringLiteral("Rubik"))
+    CONFIG_PROPERTY(QString, expressive, QStringLiteral("Rubik"))
 
 public:
     explicit FontFamily(QObject* parent = nullptr)
