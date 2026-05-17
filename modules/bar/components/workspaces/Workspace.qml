@@ -45,6 +45,10 @@ ColumnLayout {
             } else if (Config.bar.workspaces.capitalisation.toLowerCase() === "lower") {
                 displayName = displayName.toLowerCase();
             }
+            // Check numberMap override first
+            if (Config.bar.workspaces.numberMap && Config.bar.workspaces.numberMap.length > root.index && Config.bar.workspaces.numberMap[root.index]) {
+                displayName = Config.bar.workspaces.numberMap[root.index];
+            }
             const label = Config.bar.workspaces.label || displayName;
             const occupiedLabel = Config.bar.workspaces.occupiedLabel || label;
             const activeLabel = Config.bar.workspaces.activeLabel || (root.isOccupied ? occupiedLabel : label);
