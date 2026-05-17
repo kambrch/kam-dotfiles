@@ -1,0 +1,8 @@
+[Unit]
+Description=Check for new Caelestia upstream release
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/kam-dotfiles/kam/scripts/check-upstream.sh
