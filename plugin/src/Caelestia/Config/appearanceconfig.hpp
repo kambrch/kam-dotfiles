@@ -243,6 +243,7 @@ class AppearanceConfig : public ConfigObject {
     QML_ANONYMOUS
 
     CONFIG_PROPERTY(qreal, deformScale, 1)
+    CONFIG_PROPERTY(bool, forceDarkTerminal, false)
     CONFIG_SUBOBJECT(AppearanceRounding, rounding)
     CONFIG_SUBOBJECT(AppearanceSpacing, spacing)
     CONFIG_SUBOBJECT(AppearancePadding, padding)

@@ -8,6 +8,7 @@ import "modules/drawers"
 import "modules/background"
 import "modules/areapicker"
 import "modules/lock"
+import Caelestia.Config
 import Quickshell
 
 ShellRoot {
@@ -18,6 +19,12 @@ ShellRoot {
     AreaPicker {}
     Lock {
         id: lock
+
+        Component.onCompleted: {
+            if (Config.lock.launchOnStartup) {
+                lock.lock.locked = true;
+            }
+        }
     }
 
     ConfigToasts {}

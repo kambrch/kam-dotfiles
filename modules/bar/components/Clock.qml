@@ -62,7 +62,11 @@ StyledRect {
             anchors.horizontalCenter: parent.horizontalCenter
 
             horizontalAlignment: StyledText.AlignHCenter
-            text: Time.format(GlobalConfig.services.useTwelveHourClock ? "hh\nmm\nA" : "hh\nmm")
+            text: {
+                const baseFormat = GlobalConfig.services.useTwelveHourClock ? "hh\nmm\nA" : "hh\nmm"
+                const format = Config.bar.clock.secondPrecision ? (GlobalConfig.services.useTwelveHourClock ? "hh\nmm\nss\nA" : "hh\nmm\nss") : baseFormat
+                return Time.format(format)
+            }
             font.pointSize: Tokens.font.size.smaller
             font.family: Tokens.font.family.mono
             color: root.colour

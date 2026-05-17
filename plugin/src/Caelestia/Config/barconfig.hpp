@@ -118,6 +118,7 @@ class BarClock : public ConfigObject {
     CONFIG_PROPERTY(bool, background, false)
     CONFIG_PROPERTY(bool, showDate, false)
     CONFIG_PROPERTY(bool, showIcon, true)
+    CONFIG_PROPERTY(bool, secondPrecision, false)
 
 public:
     explicit BarClock(QObject* parent = nullptr)
@@ -131,6 +132,7 @@ class BarConfig : public ConfigObject {
     CONFIG_PROPERTY(bool, persistent, true)
     CONFIG_PROPERTY(bool, showOnHover, true)
     CONFIG_PROPERTY(int, dragThreshold, 20)
+    CONFIG_PROPERTY(bool, clickToShow, false)
     CONFIG_SUBOBJECT(BarScrollActions, scrollActions)
     CONFIG_SUBOBJECT(BarPopouts, popouts)
     CONFIG_SUBOBJECT(BarWorkspaces, workspaces)
