@@ -33,7 +33,11 @@ Singleton {
     function setVolume(newVolume: real): void {
         if (sink?.ready && sink?.audio) {
             sink.audio.muted = false;
-            sink.audio.volume = Math.max(0, Math.min(GlobalConfig.services.maxVolume, newVolume));
+            const cappedVolume = Math.max(0, Math.min(GlobalConfig.services.maxVolume, newVolume));
+            sink.audio.volume = cappedVolume;
+            if (GlobalConfig.services.audioProtection && newVolume > GlobalConfig.services.maxVolume) {
+                Toaster.toast(qsTr("Volume capped"), qsTr("Volume protection enabled"), "volume_mute");
+            }
         }
     }
 
@@ -48,7 +52,11 @@ Singleton {
     function setSourceVolume(newVolume: real): void {
         if (source?.ready && source?.audio) {
             source.audio.muted = false;
-            source.audio.volume = Math.max(0, Math.min(GlobalConfig.services.maxVolume, newVolume));
+            const cappedVolume = Math.max(0, Math.min(GlobalConfig.services.maxVolume, newVolume));
+            source.audio.volume = cappedVolume;
+            if (GlobalConfig.services.audioProtection && newVolume > GlobalConfig.services.maxVolume) {
+                Toaster.toast(qsTr("Mic volume capped"), qsTr("Volume protection enabled"), "mic");
+            }
         }
     }
 
@@ -80,7 +88,11 @@ Singleton {
     function setStreamVolume(stream: PwNode, newVolume: real): void {
         if (stream?.ready && stream?.audio) {
             stream.audio.muted = false;
-            stream.audio.volume = Math.max(0, Math.min(GlobalConfig.services.maxVolume, newVolume));
+            const cappedVolume = Math.max(0, Math.min(GlobalConfig.services.maxVolume, newVolume));
+            stream.audio.volume = cappedVolume;
+            if (GlobalConfig.services.audioProtection && newVolume > GlobalConfig.services.maxVolume) {
+                Toaster.toast(qsTr("App volume capped"), qsTr("Volume protection enabled"), "volume_mute");
+            }
         }
     }
 
